@@ -1,7 +1,9 @@
-import { CustomNextPage } from "next";
+import type { CustomNextPage } from "next";
+import { MainLayout } from "src/layout";
+import { Main } from "src/pageComponent/index";
 
-const Home: CustomNextPage = () => {
-  return <div></div>;
-};
+const MainPage: CustomNextPage = () => <Main />;
 
-export default Home;
+MainPage.getLayout = MainLayout;
+
+export default MainPage;

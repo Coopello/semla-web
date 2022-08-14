@@ -1,13 +1,28 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { MantineProvider } from "@mantine/core";
+import "src/style/globals.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import { createEmotionCache, MantineProvider } from "@mantine/core";
+import type { CustomAppPage } from "next/app";
+import Head from "next/head";
+
+const appendCache = createEmotionCache({ key: "mantine", prepend: false });
+
+const MyApp: CustomAppPage = ({ Component, pageProps }) => {
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <Component {...pageProps} />
-    </MantineProvider>
+    <>
+      <Head>
+        <title>Semla</title>
+      </Head>
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        emotionCache={appendCache}
+      >
+        {getLayout(<Component {...pageProps} />)}
+      </MantineProvider>
+    </>
   );
-}
+};
 
 export default MyApp;

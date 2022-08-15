@@ -1,6 +1,7 @@
 import "src/style/globals.css";
 
 import { createEmotionCache, MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 import type { CustomAppPage } from "next/app";
 import Head from "next/head";
 
@@ -19,7 +20,9 @@ const MyApp: CustomAppPage = ({ Component, pageProps }) => {
         withNormalizeCSS
         emotionCache={appendCache}
       >
-        {getLayout(<Component {...pageProps} />)}
+        <NotificationsProvider position="top-right" limit={5}>
+          {getLayout(<Component {...pageProps} />)}
+        </NotificationsProvider>
       </MantineProvider>
     </>
   );

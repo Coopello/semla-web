@@ -2,13 +2,22 @@ import { QuestionIcon } from "public/svg";
 import type { FC } from "react";
 import { TextArea } from "src/component/TextArea";
 import { useScreenSize } from "src/lib";
+import type { PostContentsForm, TitleItem } from "src/type";
 
 /**
  * @package
  */
-export const MainContent: FC<{ description: string; title: string }> = ({
-  description,
-  title,
+export const MainContent: FC<{
+  handleChangeBodyContent: (
+    key: keyof PostContentsForm["bodyContents"],
+    value: string
+  ) => void;
+  item: TitleItem;
+  value: string;
+}> = ({
+  handleChangeBodyContent,
+  item: { description, title, type },
+  value,
 }) => {
   const { isMobile } = useScreenSize();
 
@@ -17,6 +26,7 @@ export const MainContent: FC<{ description: string; title: string }> = ({
       <TextArea
         autosize
         classNames={{
+          label: "cursor-pointer",
           wrapper: "h-auto",
           input: "h-auto text-lg",
         }}
@@ -32,7 +42,9 @@ export const MainContent: FC<{ description: string; title: string }> = ({
           </div>
         }
         variant="unstyled"
+        value={value}
         placeholder={isMobile ? description : undefined}
+        onChange={(e) => handleChangeBodyContent(type, e.target.value)}
       />
     </li>
   );

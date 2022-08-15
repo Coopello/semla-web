@@ -8,11 +8,14 @@ import { MainContentsArea } from "src/pageComponent/index/MainContentsArea";
 import { PostActionButton } from "src/pageComponent/index/PostActionButton";
 import { PostConfirmDialog } from "src/pageComponent/index/PostConfirmDialog";
 import { SideMenuArea } from "src/pageComponent/index/SideMenuArea";
-import { TITLE_ITEMS } from "src/pageLib";
+import { TITLE_ITEMS } from "src/pageLib/index";
+import { useMainPageForm } from "src/pageLib/index";
 
 export const Main: FC = () => {
   const { isMobile } = useScreenSize();
   const [isSubmitModal, handleSubmitModal] = useDisclosure(false);
+  const { handleChangeBodyContent, handleSubmitContents, values } =
+    useMainPageForm();
 
   return (
     <div className={isMobile ? "pt-[72px]" : ""}>
@@ -21,8 +24,9 @@ export const Main: FC = () => {
         mainContents={TITLE_ITEMS.map((item) => (
           <MainContent
             key={item.title}
-            description={item.description}
-            title={item.title}
+            handleChangeBodyContent={handleChangeBodyContent}
+            item={item}
+            value={values.bodyContents[item.type]}
           />
         ))}
         sideMenuArea={<SideMenuArea />}
@@ -35,7 +39,10 @@ export const Main: FC = () => {
       <PostConfirmDialog
         isModalOpen={isSubmitModal}
         onClose={handleSubmitModal.close}
-        onSubmit={handleSubmitModal.close}
+        onSubmit={() => {
+          handleSubmitContents();
+          handleSubmitModal.close();
+        }}
       />
     </div>
   );

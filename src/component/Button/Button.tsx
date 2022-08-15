@@ -8,11 +8,14 @@ import { forwardRef } from "react";
 export const Button = forwardRef<
   HTMLButtonElement,
   Omit<ButtonProps, "color"> & {
-    color?: "primary" | "gray";
+    color?: "primary" | "primaryOutLine" | "gray";
+    onClick?: () => void;
   }
 >(({ className, color = "primary", style, ...props }, ref) => {
   const colorClass = {
     primary: "bg-primary hover:bg-secondary-dark",
+    primaryOutLine:
+      "border bg-white border-primary text-primary hover:bg-gray-100",
     gray: "bg-custom-gray text-black hover:bg-custom-gray hover:opacity-80",
   };
 

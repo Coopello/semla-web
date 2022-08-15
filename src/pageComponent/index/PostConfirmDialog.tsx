@@ -13,7 +13,7 @@ export const PostConfirmDialog: FC<{
   <Modal isModalOpen={isModalOpen} onClose={onClose} outsideClickClose={false}>
     <p className="text-lg font-bold text-gray-400">Qiitaに投稿しますか？</p>
     <div className="mt-8 flex items-center justify-end gap-4">
-      <Button color="primaryOutLine" onClick={onSubmit}>
+      <Button color="primaryOutLine" onClick={onClose}>
         いいえ
       </Button>
       <Button onClick={onSubmit}>はい</Button>

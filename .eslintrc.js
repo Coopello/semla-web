@@ -98,14 +98,20 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["pages/**/*.tsx", "src/**/*.lazy.tsx", "pages/api/**/*.ts", "next.config.mjs"],
+      files: [
+        "pages/**/*.tsx",
+        "src/**/*.lazy.tsx",
+        "pages/api/**/*.ts",
+        "next.config.js",
+      ],
       rules: { "import/no-default-export": "off" },
     },
     {
       files: [
         "pages/**/*.tsx",
+        "src/api/**/*.ts",
         "src/model/**/*.ts",
-        "next.config.mjs",
+        "next.config.js",
         "src/type/**/*.d.ts",
       ],
       rules: {

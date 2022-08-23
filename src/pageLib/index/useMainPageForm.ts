@@ -9,7 +9,7 @@ export const useMainPageForm = () => {
   const { sendCreateQiitaPostRequest } = createQiitaPost();
   const { reset, setValues, values } = useForm<PostContentsForm>({
     initialValues: {
-      title: "Title",
+      title: "",
       bodyContents: {
         oneWord: "",
         overView: "",
@@ -18,12 +18,19 @@ export const useMainPageForm = () => {
       },
       tags: [
         {
-          name: "Ruby",
+          name: "メモ",
           versions: ["0.0.1"],
         },
       ],
     },
   });
+
+  const handleChangeTitle = (value: string) => {
+    setValues((prev) => ({
+      ...prev,
+      title: value,
+    }));
+  };
 
   const handleChangeBodyContent = (
     key: keyof PostContentsForm["bodyContents"],
@@ -48,6 +55,7 @@ export const useMainPageForm = () => {
 
   return {
     handleChangeBodyContent,
+    handleChangeTitle,
     handleSubmitContents,
     values,
   };

@@ -15,7 +15,9 @@ export const MainContentsArea: FC<{
       {!isMobile ? sideMenuArea : null}
       <ul
         className={`flex  flex-1 flex-col gap-4 ${
-          isMobile ? "" : "h-[calc(100vh_-_128px)] overflow-y-scroll pb-8"
+          isMobile
+            ? ""
+            : "h-[calc(100vh_-_128px)] overflow-x-hidden overflow-y-scroll pb-8"
         }`}
       >
         {mainContents}

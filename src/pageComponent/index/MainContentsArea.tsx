@@ -19,6 +19,9 @@ export const MainContentsArea: FC<{
             ? ""
             : "h-[calc(100vh_-_128px)] overflow-x-hidden overflow-y-scroll pb-8"
         }`}
+        style={{
+          scrollBehavior: "smooth",
+        }}
       >
         {mainContents}
       </ul>

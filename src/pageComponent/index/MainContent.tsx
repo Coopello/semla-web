@@ -13,16 +13,18 @@ export const MainContent: FC<{
     value: string
   ) => void;
   item: TitleItem;
+  sectionId: keyof PostContentsForm["bodyContents"];
   value: string;
 }> = ({
   handleChangeBodyContent,
   item: { description, title, type },
+  sectionId,
   value,
 }) => {
   const { isMobile } = useScreenSize();
 
   return (
-    <li className="flex-1 rounded-xl bg-white p-8">
+    <li className="flex-1 rounded-xl bg-white p-8" id={sectionId}>
       <TextArea
         autosize
         classNames={{

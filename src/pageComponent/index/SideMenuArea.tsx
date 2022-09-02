@@ -3,9 +3,17 @@
  */
 export const SideMenuArea = () => (
   <ul className="flex h-fit list-inside list-disc flex-col gap-4 rounded-xl bg-white p-8 text-lg font-bold">
-    <li>一言まとめ</li>
-    <li>調べたことを深掘り</li>
-    <li>自分の考え</li>
-    <li>参考文献</li>
+    <li>
+      <a href="#oneWord">一言まとめ</a>
+    </li>
+    <li>
+      <a href="#overView">調べたことを深掘り</a>
+    </li>
+    <li>
+      <a href="#myIdea">自分の考え</a>
+    </li>
+    <li>
+      <a href="#reference">参考文献</a>
+    </li>
   </ul>
 );

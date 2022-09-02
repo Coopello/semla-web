@@ -36,6 +36,7 @@ export const Main: FC = () => {
               <MainContent
                 key={item.title}
                 handleChangeBodyContent={handleChangeBodyContent}
+                sectionId={item.type}
                 item={item}
                 value={values.bodyContents[item.type]}
               />

@@ -13,7 +13,7 @@ const MyApp: CustomAppPage = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Semla</title>
+        <title>Coopemo</title>
       </Head>
       <MantineProvider
         withGlobalStyles

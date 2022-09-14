@@ -13,4 +13,5 @@ export type PostContentsForm = {
     name: string;
     versions: string[];
   }[];
+  token: string;
 };

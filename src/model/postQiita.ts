@@ -6,6 +6,7 @@ export type PostQiita = {
       name: string;
       versions: string[];
     }[];
+    token: string;
     private: boolean;
   };
 };

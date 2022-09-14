@@ -1,13 +1,11 @@
 import { useForm } from "@mantine/form";
-import { createQiitaPost } from "src/lib";
 import type { PostContentsForm } from "src/type";
 
 /**
  * @package
  */
 export const useMainPageForm = () => {
-  const { sendCreateQiitaPostRequest } = createQiitaPost();
-  const { reset, setValues, values } = useForm<PostContentsForm>({
+  const { setValues, values } = useForm<Omit<PostContentsForm, "token">>({
     initialValues: {
       title: "",
       bodyContents: {
@@ -45,18 +43,9 @@ export const useMainPageForm = () => {
     }));
   };
 
-  const handleSubmitContents = async () => {
-    const type = await sendCreateQiitaPostRequest(values);
-
-    if (type === "SUCCESS") {
-      reset();
-    }
-  };
-
   return {
     handleChangeBodyContent,
     handleChangeTitle,
-    handleSubmitContents,
     values,
   };
 };

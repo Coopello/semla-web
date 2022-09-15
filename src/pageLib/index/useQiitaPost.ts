@@ -15,12 +15,17 @@ export const useQiitaPost = (
   > | null
 ) => {
   const router = useRouter();
-  const { code } = router.query;
+  const { code, state } = router.query;
   const { sendGetQiitaAccessTokenRequest } = getQiitaAccessToken();
   const { sendCreateQiitaPostRequest } = createQiitaPost();
 
   useEffect(() => {
-    if (typeof code !== "string") return;
+    if (
+      typeof code !== "string" ||
+      state === process.env.NEXT_PUBLIC_QIITA_REDIRECT_STATE
+    ) {
+      return;
+    }
 
     const formContentsRow = handleSetFormContentsFormLocalStorage();
     if (!formContentsRow) return;
@@ -51,5 +56,6 @@ export const useQiitaPost = (
     reset,
     sendCreateQiitaPostRequest,
     sendGetQiitaAccessTokenRequest,
+    state,
   ]);
 };

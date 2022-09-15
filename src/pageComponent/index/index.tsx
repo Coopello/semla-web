@@ -10,7 +10,7 @@ import { PostActionButton } from "src/pageComponent/index/PostActionButton";
 import { PostConfirmDialog } from "src/pageComponent/index/PostConfirmDialog";
 import { SideMenuArea } from "src/pageComponent/index/SideMenuArea";
 import { TitleForm } from "src/pageComponent/index/TitleForm";
-import { TITLE_ITEMS } from "src/pageLib/index";
+import { saveFormContentsToLocalStorage, TITLE_ITEMS } from "src/pageLib/index";
 import { useMainPageForm } from "src/pageLib/index";
 
 export const Main: FC = () => {
@@ -52,6 +52,7 @@ export const Main: FC = () => {
         isModalOpen={isSubmitModal}
         onClose={handleSubmitModal.close}
         onSubmit={() => {
+          saveFormContentsToLocalStorage(values);
           const redirectUrl = getQiitaRedirectUrl();
           router.push(redirectUrl);
           handleSubmitModal.close();

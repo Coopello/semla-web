@@ -50,12 +50,6 @@ export const useQiitaPost = (
         localStorage.removeItem("formContents");
       }
     })();
-  }, [
-    code,
-    handleSetFormContentsFormLocalStorage,
-    reset,
-    sendCreateQiitaPostRequest,
-    sendGetQiitaAccessTokenRequest,
-    state,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };

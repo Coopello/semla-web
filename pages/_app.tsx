@@ -14,6 +14,11 @@ const MyApp: CustomAppPage = ({ Component, pageProps }) => {
     <>
       <Head>
         <title>Coopemo</title>
+        <meta
+          name="description"
+          property="og:description"
+          content="Coopemoは「メモ感覚」で情報発信ができるアプリです。テンプレートに従って学習内容を記載していくことで、他の人にも見てもらいやすい記事が作成できます。"
+        />
       </Head>
       <MantineProvider
         withGlobalStyles

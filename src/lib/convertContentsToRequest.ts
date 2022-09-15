@@ -1,4 +1,4 @@
-import type { PostQiita } from "src/model/postQiita";
+import type { PostQiita } from "src/model/PostQiita";
 import type { PostContentsForm } from "src/type";
 
 const ITEMS = {
@@ -29,6 +29,7 @@ export const convertContentsToRequest = (
     title: contents.title,
     body,
     tags: contents.tags,
+    token: contents.token,
     private: true,
   };
 };

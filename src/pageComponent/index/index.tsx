@@ -1,6 +1,7 @@
 import { useDisclosure } from "@mantine/hooks";
+import { useRouter } from "next/router";
 import type { FC } from "react";
-import { useScreenSize } from "src/lib";
+import { getQiitaRedirectUrl, useScreenSize } from "src/lib";
 import { BottomActionArea } from "src/pageComponent/index/BottomActionArea";
 import { HeaderArea } from "src/pageComponent/index/HeaderArea";
 import { MainContent } from "src/pageComponent/index/MainContent";
@@ -13,14 +14,11 @@ import { TITLE_ITEMS } from "src/pageLib/index";
 import { useMainPageForm } from "src/pageLib/index";
 
 export const Main: FC = () => {
+  const router = useRouter();
   const { isMobile } = useScreenSize();
   const [isSubmitModal, handleSubmitModal] = useDisclosure(false);
-  const {
-    handleChangeBodyContent,
-    handleChangeTitle,
-    handleSubmitContents,
-    values,
-  } = useMainPageForm();
+  const { handleChangeBodyContent, handleChangeTitle, values } =
+    useMainPageForm();
 
   return (
     <div className={isMobile ? "pt-[72px]" : ""}>
@@ -54,7 +52,8 @@ export const Main: FC = () => {
         isModalOpen={isSubmitModal}
         onClose={handleSubmitModal.close}
         onSubmit={() => {
-          handleSubmitContents();
+          const redirectUrl = getQiitaRedirectUrl();
+          router.push(redirectUrl);
           handleSubmitModal.close();
         }}
       />

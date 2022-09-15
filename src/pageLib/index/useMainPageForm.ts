@@ -1,29 +1,43 @@
 import { useForm } from "@mantine/form";
-import { createQiitaPost } from "src/lib";
+import { getFormContentsFromLocalStorage } from "src/pageLib/index/getFormContentsFromLocalStorage";
+import { useQiitaPost } from "src/pageLib/index/useQiitaPost";
 import type { PostContentsForm } from "src/type";
 
 /**
  * @package
  */
 export const useMainPageForm = () => {
-  const { sendCreateQiitaPostRequest } = createQiitaPost();
-  const { reset, setValues, values } = useForm<PostContentsForm>({
-    initialValues: {
-      title: "",
-      bodyContents: {
-        oneWord: "",
-        overView: "",
-        myIdea: "",
-        reference: "",
-      },
-      tags: [
-        {
-          name: "メモ",
-          versions: ["0.0.1"],
+  const { reset, setValues, values } = useForm<Omit<PostContentsForm, "token">>(
+    {
+      initialValues: {
+        title: "",
+        bodyContents: {
+          oneWord: "",
+          overView: "",
+          myIdea: "",
+          reference: "",
         },
-      ],
-    },
-  });
+        tags: [
+          {
+            name: "メモ",
+            versions: ["0.0.1"],
+          },
+        ],
+      },
+    }
+  );
+
+  const handleSetFormContentsFormLocalStorage = () => {
+    const formContentsRow = getFormContentsFromLocalStorage();
+
+    if (!formContentsRow) return null;
+
+    // もしリクエストが成功しなかった場合にリクエストし直せるように値を入れておく
+    setValues(formContentsRow);
+
+    // リクエスト用に値を返却しておく
+    return formContentsRow;
+  };
 
   const handleChangeTitle = (value: string) => {
     setValues((prev) => ({
@@ -45,18 +59,11 @@ export const useMainPageForm = () => {
     }));
   };
 
-  const handleSubmitContents = async () => {
-    const type = await sendCreateQiitaPostRequest(values);
-
-    if (type === "SUCCESS") {
-      reset();
-    }
-  };
+  useQiitaPost(reset, handleSetFormContentsFormLocalStorage);
 
   return {
     handleChangeBodyContent,
     handleChangeTitle,
-    handleSubmitContents,
     values,
   };
 };

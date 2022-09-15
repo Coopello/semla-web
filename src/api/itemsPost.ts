@@ -1,5 +1,5 @@
 import { axios } from "src/lib/axios";
-import type { PostQiita } from "src/model/postQiita";
+import type { PostQiita } from "src/model/PostQiita";
 import type { ResponseResultType } from "src/type";
 
 /**
@@ -19,7 +19,7 @@ export const ItemsPost = async (
       },
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_QIITA_TOKEN}`,
+          Authorization: `Bearer ${request.token}`,
         },
       }
     );

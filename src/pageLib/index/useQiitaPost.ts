@@ -40,6 +40,8 @@ export const useQiitaPost = (
         return;
       }
 
+      console.log(getQiitaAccessTokenResult);
+
       const sendCreateQiitaPostResult = await sendCreateQiitaPostRequest({
         ...formContentsRow,
         token: getQiitaAccessTokenResult.token,
@@ -51,5 +53,5 @@ export const useQiitaPost = (
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [code, state]);
 };

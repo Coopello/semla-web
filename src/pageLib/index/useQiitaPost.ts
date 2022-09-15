@@ -40,8 +40,6 @@ export const useQiitaPost = (
         return;
       }
 
-      console.log(getQiitaAccessTokenResult);
-
       const sendCreateQiitaPostResult = await sendCreateQiitaPostRequest({
         ...formContentsRow,
         token: getQiitaAccessTokenResult.token,

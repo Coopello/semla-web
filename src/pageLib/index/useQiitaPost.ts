@@ -22,7 +22,7 @@ export const useQiitaPost = (
   useEffect(() => {
     if (
       typeof code !== "string" ||
-      state === process.env.NEXT_PUBLIC_QIITA_REDIRECT_STATE
+      state !== process.env.NEXT_PUBLIC_QIITA_REDIRECT_STATE
     ) {
       return;
     }

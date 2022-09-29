@@ -30,6 +30,6 @@ export const convertContentsToRequest = (
     body,
     tags: contents.tags,
     token: contents.token,
-    private: true,
+    private: false,
   };
 };

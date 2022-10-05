@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { showNotification } from "@mantine/notifications";
 import { AccessTokens } from "src/api";
 
 /**
@@ -16,12 +15,6 @@ export const getQiitaAccessToken = () => {
     if (result.type === "SUCCESS") {
       return result.data;
     }
-
-    showNotification({
-      color: "red",
-      title: "投稿失敗",
-      message: "認証に失敗しました。もう一度お試しください。",
-    });
 
     return "FAILURE";
   };

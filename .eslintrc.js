@@ -9,7 +9,11 @@ module.exports = {
     project: "./tsconfig.json",
   },
   ignorePatterns: [".eslintrc.*", "*.config.*"],
-  settings: { tailwindcss: { groupByResponsive: true } },
+  settings: {
+    tailwindcss: {
+      groupByResponsive: true,
+    },
+  },
   plugins: [
     "simple-import-sort",
     "sort-destructure-keys",
@@ -22,13 +26,22 @@ module.exports = {
     "plugin:tailwindcss/recommended",
     "next/core-web-vitals",
     "prettier",
+    "plugin:storybook/recommended",
   ],
   rules: {
     curly: ["error", "multi-line"],
-    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-console": [
+      "error",
+      {
+        allow: ["warn", "error"],
+      },
+    ],
     "no-restricted-syntax": [
       "error",
-      { selector: "TSEnumDeclaration", message: "Don't declare enums" },
+      {
+        selector: "TSEnumDeclaration",
+        message: "Don't declare enums",
+      },
       {
         selector: "TSInterfaceDeclaration",
         message: "Don't declare interfaces",
@@ -40,7 +53,14 @@ module.exports = {
     "arrow-body-style": ["error", "as-needed"],
     "no-restricted-imports": [
       "error",
-      { paths: [{ name: "react", importNames: ["default"] }] },
+      {
+        paths: [
+          {
+            name: "react",
+            importNames: ["default"],
+          },
+        ],
+      },
     ],
     // react
     "react/display-name": "error",
@@ -67,22 +87,36 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/consistent-type-imports": [
       "warn",
-      { prefer: "type-imports" },
+      {
+        prefer: "type-imports",
+      },
     ],
     "@typescript-eslint/no-unused-vars": [
       "error",
-      { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
+      {
+        varsIgnorePattern: "^_",
+        argsIgnorePattern: "^_",
+      },
     ],
     "@typescript-eslint/naming-convention": [
       "error",
-      { selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
-      { selector: ["property", "method"], format: ["camelCase"] },
+      {
+        selector: ["typeAlias", "typeParameter"],
+        format: ["PascalCase"],
+      },
+      {
+        selector: ["property", "method"],
+        format: ["camelCase"],
+      },
       {
         selector: "variable",
         types: ["boolean"],
         format: ["PascalCase"],
         prefix: ["no", "is", "has", "should"],
-        filter: { regex: "^_", match: false },
+        filter: {
+          regex: "^_",
+          match: false,
+        },
       },
     ],
     // jsx-a11y
@@ -101,10 +135,13 @@ module.exports = {
       files: [
         "pages/**/*.tsx",
         "src/**/*.lazy.tsx",
+        "src/**/*.stories.tsx",
         "pages/api/**/*.ts",
         "next.config.js",
       ],
-      rules: { "import/no-default-export": "off" },
+      rules: {
+        "import/no-default-export": "off",
+      },
     },
     {
       files: [
@@ -117,8 +154,14 @@ module.exports = {
       rules: {
         "@typescript-eslint/naming-convention": [
           "error",
-          { selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
-          { selector: ["classProperty", "method"], format: ["camelCase"] },
+          {
+            selector: ["typeAlias", "typeParameter"],
+            format: ["PascalCase"],
+          },
+          {
+            selector: ["classProperty", "method"],
+            format: ["camelCase"],
+          },
           {
             selector: "variable",
             types: ["boolean"],

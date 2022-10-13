@@ -1,6 +1,7 @@
 import { ItemsPost } from "src/api";
-import { convertContentsToRequest } from "src/lib";
 import type { PostContentsForm } from "src/type";
+
+import { convertContentsToRequest } from "./";
 
 /**
  * @package

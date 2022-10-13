@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { AccessTokens } from "src/api";
+import { CLIENT_ID, CLIENT_SECRET } from "src/config";
 
 /**
  * @package
@@ -7,8 +8,8 @@ import { AccessTokens } from "src/api";
 export const getQiitaAccessToken = () => {
   const sendGetQiitaAccessTokenRequest = async (request: { code: string }) => {
     const result = await AccessTokens({
-      client_id: process.env.NEXT_PUBLIC_CLIENT_ID || "",
-      client_secret: process.env.NEXT_PUBLIC_CLIENT_SECRET || "",
+      client_id: CLIENT_ID || "",
+      client_secret: CLIENT_SECRET || "",
       code: request.code,
     });
 

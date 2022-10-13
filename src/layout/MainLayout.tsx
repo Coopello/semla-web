@@ -1,5 +1,5 @@
 import type { CustomLayout } from "next";
-import { useScreenSize } from "src/lib";
+import { useScreenSize } from "src/hook";
 
 /**
  * @package

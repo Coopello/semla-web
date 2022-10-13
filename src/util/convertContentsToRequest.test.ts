@@ -1,4 +1,4 @@
-import { convertContentsToRequest } from "src/lib/convertContentsToRequest";
+import { convertContentsToRequest } from "src/util/convertContentsToRequest";
 
 const mockFormBody = {
   title: "hoge",

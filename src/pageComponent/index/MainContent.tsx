@@ -1,7 +1,7 @@
 import { QuestionIcon } from "public/svg";
 import type { FC } from "react";
 import { TextArea } from "src/component/TextArea";
-import { useScreenSize } from "src/lib";
+import { useScreenSize } from "src/hook";
 import type { PostContentsForm, TitleItem } from "src/type";
 
 /**

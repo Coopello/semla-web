@@ -1,4 +1,4 @@
-import { axios } from "src/lib/axios";
+import { axios } from "src/lib";
 import type { PostQiita } from "src/model/PostQiita";
 import type { ResponseResultType } from "src/type";
 
@@ -15,7 +15,7 @@ export const ItemsPost = async (
         title: request.title,
         body: request.body,
         tags: request.tags,
-        private: request.private,
+        private: true,
       },
       {
         headers: {

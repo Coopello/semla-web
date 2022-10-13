@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import axios from "axios";
 
-export const axiosInstance = axios.create({
+const axiosInstance = axios.create({
   baseURL: "https://qiita.com",
   responseType: "json",
   headers: {
@@ -9,4 +9,7 @@ export const axiosInstance = axios.create({
   },
 });
 
+/**
+ * @package
+ */
 export { axiosInstance as axios };

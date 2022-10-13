@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { useScreenSize } from "src/lib";
+import { useScreenSize } from "src/hook";
 
 /**
  * @package

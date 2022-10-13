@@ -2,8 +2,9 @@ import type { Reset } from "@mantine/form/lib/types";
 import { showNotification } from "@mantine/notifications";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { createQiitaPost, getQiitaAccessToken } from "src/lib";
+import { QIITA_REDIRECT_STATE } from "src/config";
 import type { PostContentsForm } from "src/type";
+import { createQiitaPost, getQiitaAccessToken } from "src/util";
 
 /**
  * @package
@@ -21,10 +22,7 @@ export const useQiitaPost = (
   const { sendCreateQiitaPostRequest } = createQiitaPost();
 
   useEffect(() => {
-    if (
-      typeof code !== "string" ||
-      state !== process.env.NEXT_PUBLIC_QIITA_REDIRECT_STATE
-    ) {
+    if (typeof code !== "string" || state !== QIITA_REDIRECT_STATE) {
       return;
     }
 

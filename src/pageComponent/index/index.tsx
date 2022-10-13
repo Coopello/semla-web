@@ -1,7 +1,7 @@
 import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import type { FC } from "react";
-import { getQiitaRedirectUrl, useScreenSize } from "src/lib";
+import { useScreenSize } from "src/hook";
 import { BottomActionArea } from "src/pageComponent/index/BottomActionArea";
 import { HeaderArea } from "src/pageComponent/index/HeaderArea";
 import { MainContent } from "src/pageComponent/index/MainContent";
@@ -12,6 +12,7 @@ import { SideMenuArea } from "src/pageComponent/index/SideMenuArea";
 import { TitleForm } from "src/pageComponent/index/TitleForm";
 import { saveFormContentsToLocalStorage, TITLE_ITEMS } from "src/pageLib/index";
 import { useMainPageForm } from "src/pageLib/index";
+import { getQiitaRedirectUrl } from "src/util";
 
 export const Main: FC = () => {
   const router = useRouter();

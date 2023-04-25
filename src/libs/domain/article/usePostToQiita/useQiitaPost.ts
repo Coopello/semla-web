@@ -62,20 +62,22 @@ export const useQiitaPost = (
 
       if (!!createQiitaPostError || !createQiitaPostData) {
         showNotification({
-          color: "green",
-          title: "投稿完了",
-          message: "Qiitaに投稿しました！",
-        });
-
-        reset();
-        localStorage.removeItem("formContents");
-      } else {
-        showNotification({
           color: "red",
           title: "投稿失敗",
           message: "Qiitaに投稿できませんでした。",
         });
+
+        return;
       }
+
+      showNotification({
+        color: "green",
+        title: "投稿完了",
+        message: "Qiitaに投稿しました！",
+      });
+
+      reset();
+      localStorage.removeItem("formContents");
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code, state]);

@@ -147,6 +147,7 @@ module.exports = {
       files: [
         "pages/**/*.tsx",
         "src/api/**/*.ts",
+        "src/apis/**/*.ts",
         "src/model/**/*.ts",
         "next.config.js",
         "src/type/**/*.d.ts",

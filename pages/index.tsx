@@ -1,6 +1,6 @@
 import type { CustomNextPage } from "next";
+import { Main } from "src/components/page/Main";
 import { MainLayout } from "src/layout";
-import { Main } from "src/pageComponent/index";
 
 const MainPage: CustomNextPage = () => <Main />;
 

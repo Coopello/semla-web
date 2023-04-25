@@ -1,0 +1,1 @@
+export { getFormContentsFromLocalStorage } from "./getFormContentsFromLocalStorage";

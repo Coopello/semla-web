@@ -1,0 +1,1 @@
+export { getQiitaRedirectUrl } from "./getQiitaRedirectUrl";

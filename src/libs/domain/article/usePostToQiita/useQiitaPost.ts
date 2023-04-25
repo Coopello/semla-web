@@ -39,6 +39,7 @@ export const useQiitaPost = (
 
     const formContentsRow = handleSetFormContentsFormLocalStorage();
     if (!formContentsRow) return;
+
     (async () => {
       const { data: getQiitaAccessTokenData, error: getQiitaAccessTokenError } =
         await sendGetQiitaAccessTokenRequest({

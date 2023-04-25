@@ -1,9 +1,9 @@
-import type { TitleItem } from "src/type";
+import type { ContentTitle } from "src/models/article";
 
 /**
  * @package
  */
-export const getContentTitleList = (): TitleItem[] => [
+export const getContentTitleList = (): ContentTitle[] => [
   {
     description: "一言で背景をまとめましょう！",
     title: "一言まとめ",

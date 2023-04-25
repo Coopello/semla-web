@@ -1,5 +1,5 @@
 import { createArticle } from "src/apis/createArticle";
-import type { PostContentsForm } from "src/type";
+import type { PostContentsForm } from "src/models/article";
 
 /**
  * @package
@@ -10,11 +10,10 @@ export const createQiitaPost = () => {
       convertContentsToRequest(request)
     );
 
-    if (!!error || !data) {
-      return "FAILURE";
-    }
-
-    return "SUCCESS";
+    return {
+      data,
+      error,
+    };
   };
 
   return { sendCreateQiitaPostRequest };

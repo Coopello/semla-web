@@ -1,4 +1,4 @@
-import type { PostContentsForm } from "src/type";
+import type { PostContentsForm } from "src/models/article";
 
 /**
  * @package

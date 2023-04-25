@@ -12,11 +12,10 @@ export const getQiitaAccessToken = () => {
       code: request.code,
     });
 
-    if (!!error || !data) {
-      return error;
-    }
-
-    return data;
+    return {
+      data,
+      error,
+    };
   };
 
   return { sendGetQiitaAccessTokenRequest };

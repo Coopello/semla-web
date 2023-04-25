@@ -1,6 +1,6 @@
 import { CoopemoIcon } from "public/svg";
 import type { FC } from "react";
-import { Button } from "src/component/Button";
+import { Button } from "src/components/ui/Button";
 
 /**
  * @package

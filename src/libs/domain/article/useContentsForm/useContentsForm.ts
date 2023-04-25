@@ -1,7 +1,7 @@
 import { useForm } from "@mantine/form";
 import { getContentTitleList } from "src/libs/domain/article/getCotentTitleList";
 import { getFormContentsFromLocalStorage } from "src/libs/domain/article/getFormContentsFromLocalStorage";
-import type { PostContentsForm } from "src/type";
+import type { PostContentsForm } from "src/models/article";
 
 /**
  * @package

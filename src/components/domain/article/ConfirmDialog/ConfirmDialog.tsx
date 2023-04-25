@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { Button } from "src/component/Button";
-import { Modal } from "src/component/Modal";
+import { Button } from "src/components/ui/Button";
+import { Modal } from "src/components/ui/Modal";
 
 /**
  * @package

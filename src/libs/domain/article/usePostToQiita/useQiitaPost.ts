@@ -2,10 +2,11 @@ import type { Reset } from "@mantine/form/lib/types";
 import { showNotification } from "@mantine/notifications";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { createQiitaPost, getQiitaAccessToken } from "src/lib";
+import { createQiitaPost } from "src/libs/domain/article/createQiitaPost";
+import { getQiitaAccessToken } from "src/libs/domain/article/getQiitaAccessToken";
 import { getQiitaRedirectUrl } from "src/libs/domain/article/getQiitaRedirectUrl";
 import { saveFormContentsToLocalStorage } from "src/libs/domain/article/saveFormContentsToLocalStorage";
-import type { PostContentsForm } from "src/type";
+import type { PostContentsForm } from "src/models/article";
 
 /**
  * @package
@@ -39,13 +40,11 @@ export const useQiitaPost = (
     const formContentsRow = handleSetFormContentsFormLocalStorage();
     if (!formContentsRow) return;
     (async () => {
-      const getQiitaAccessTokenResult = await sendGetQiitaAccessTokenRequest({
-        code,
-      });
-      if (
-        !getQiitaAccessTokenResult ||
-        getQiitaAccessTokenResult === "FAILURE"
-      ) {
+      const { data: getQiitaAccessTokenData, error: getQiitaAccessTokenError } =
+        await sendGetQiitaAccessTokenRequest({
+          code,
+        });
+      if (!!getQiitaAccessTokenError || !getQiitaAccessTokenData) {
         showNotification({
           color: "red",
           title: "投稿失敗",
@@ -55,12 +54,13 @@ export const useQiitaPost = (
         return;
       }
 
-      const sendCreateQiitaPostResult = await sendCreateQiitaPostRequest({
-        ...formContentsRow,
-        token: getQiitaAccessTokenResult.token,
-      });
+      const { data: createQiitaPostData, error: createQiitaPostError } =
+        await sendCreateQiitaPostRequest({
+          ...formContentsRow,
+          token: getQiitaAccessTokenData.token,
+        });
 
-      if (sendCreateQiitaPostResult === "SUCCESS") {
+      if (!!createQiitaPostError || !createQiitaPostData) {
         showNotification({
           color: "green",
           title: "投稿完了",

@@ -1,8 +1,8 @@
 import { QuestionIcon } from "public/svg";
 import type { FC } from "react";
-import { TextArea } from "src/component/TextArea";
-import { useScreenSize } from "src/lib";
-import type { PostContentsForm, TitleItem } from "src/type";
+import { TextArea } from "src/components/ui/TextArea";
+import { useScreenSize } from "src/libs/utils/useScreenSize";
+import type { ContentTitle, PostContentsForm } from "src/models/article";
 
 /**
  * @package
@@ -12,7 +12,7 @@ export const ContentForm: FC<{
     key: keyof PostContentsForm["bodyContents"],
     value: string
   ) => void;
-  item: TitleItem;
+  item: ContentTitle;
   sectionId: keyof PostContentsForm["bodyContents"];
   value: string;
 }> = ({

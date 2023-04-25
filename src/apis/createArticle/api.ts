@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import type { CreateArticle } from "src/apis/createArticle/types";
-import { axios } from "src/lib/apiClient/axios";
+import { axios } from "src/libs/api/api-client";
 import type { ApiResponse } from "src/types";
 
 /**

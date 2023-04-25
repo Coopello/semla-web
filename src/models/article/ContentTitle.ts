@@ -1,7 +1,7 @@
 /**
  * @package
  */
-export type TitleItem = {
+export type ContentTitle = {
   description: string;
   title: string;
   type: "oneWord" | "overView" | "myIdea" | "reference";

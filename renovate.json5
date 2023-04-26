@@ -1,0 +1,47 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['config:base'],
+  rangeStrategy: 'bump',
+  timezone: 'Asia/Tokyo',
+  //  schedule: ["every weekend"],
+  prHourlyLimit: 0,
+  prConcurrentLimit: 4,
+  postUpdateOptions: ['yarnDedupeHighest'], // yarn.lock の重複レコードを除去
+  prCreation: 'not-pending', // stabilityDays が過ぎるまで PR を作らない
+  major: {
+    dependencyDashboardApproval: true, // major update PR は手動で作成する
+    stabilityDays: 7,
+  },
+  minor: {
+    stabilityDays: 3,
+  },
+  patch: {
+    // npm パッケージは 公開後 3 日以内であれば取り下げることができる。PR 作成まで 3 日待つことでバージョン取り下げによる影響を回避できる。
+    // https://docs.renovatebot.com/configuration-options/#prevent-holding-broken-npm-packages
+    stabilityDays: 3,
+  },
+  platformAutomerge: true,
+  packageRules: [
+    // 重要なルールほど下の方に書く。
+    // https://docs.renovatebot.com/configuration-options/#packagerules
+    // > Important to know: Renovate will evaluate all packageRules and not stop once it gets a first match. Therefore, you should order your packageRules in order of importance so that later rules can override settings from earlier rules if necessary.
+    {
+      matchDepTypes: ['peerDependencies'],
+      enabled: false,
+    },
+    {
+      matchDepTypes: ['devDependencies'],
+      matchUpdateTypes: ['patch', 'minor'], // devDep の match/minor update は automerge する
+      automerge: true,
+    },
+    {
+      groupName: 'node',
+      matchPackageNames: ['node'],
+      allowedVersions: '^16 || ^18',
+      automerge: true,
+      major: {
+        automerge: false,
+      },
+    },
+  ],
+}

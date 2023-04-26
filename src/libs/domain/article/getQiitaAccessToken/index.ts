@@ -1,0 +1,1 @@
+export { getQiitaAccessToken } from "./getQiitaAccessToken";

@@ -1,0 +1,1 @@
+export { useQiitaPost } from "./useQiitaPost";

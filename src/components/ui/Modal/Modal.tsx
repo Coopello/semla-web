@@ -10,7 +10,7 @@ export const Modal: FC<{
   outsideClickClose?: boolean;
 }> = ({ children, isModalOpen, onClose, outsideClickClose = true }) => (
   <div
-    className={isModalOpen ? "fixed top-0 left-0 h-screen w-full" : "hidden"}
+    className={isModalOpen ? "fixed left-0 top-0 h-screen w-full" : "hidden"}
   >
     <div
       className="fixed left-1/2 top-1/2 z-50 w-[362px] bg-white p-6"
@@ -21,7 +21,7 @@ export const Modal: FC<{
       {children}
     </div>
     <div
-      className="fixed top-0 left-0 h-screen w-full bg-black opacity-60"
+      className="fixed left-0 top-0 h-screen w-full bg-black opacity-60"
       onClick={outsideClickClose ? onClose : undefined}
     />
   </div>
